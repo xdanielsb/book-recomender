@@ -20,9 +20,9 @@ rd.shuffle( facts )
 # Create Facts 1
 for question,increase,type  in facts:
     increase = 1 if increase is '+' else -1
-    fact = "question('{}', {}, '{}')" .format(question,
+    fact = "question('{}', {}, '{}',{})." .format(question,
                   1./cnt[type],
-                  type)
+                  type, increase)
     print( fact )
 
 # Create Facts 2
@@ -33,8 +33,7 @@ for line in lines:
     if( line.startswith('*')):
         category = line[1:].split(' ')[0]
         continue
-
     score, name, author, *categories = line.split(',')
     for category in categories:
-        book = "book({},'{}','{}','{}')".format(score, name, author, category)
+        book = "book({},'{}','{}','{}').".format(score, name, author, category)
         print(book)
