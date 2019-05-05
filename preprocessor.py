@@ -17,10 +17,24 @@ for line in lines:
         cnt[category] = cnt[category]+1
 rd.shuffle( facts )
 
-# Create Facts
+# Create Facts 1
 for question,increase,type  in facts:
     increase = 1 if increase is '+' else -1
-    print("question('{}', {}, '{}')"
-          .format(question,
-                  1/cnt[type],
-                  type))
+    fact = "question('{}', {}, '{}')" .format(question,
+                  1./cnt[type],
+                  type)
+    print( fact )
+
+# Create Facts 2
+lines = open("books", "r").read().splitlines()
+for line in lines:
+    if( len(line)< 2 ): continue
+    if( line.startswith('?')): continue
+    if( line.startswith('*')):
+        category = line[1:].split(' ')[0]
+        continue
+
+    score, name, author, *categories = line.split(',')
+    for category in categories:
+        book = "book({},'{}','{}','{}')".format(score, name, author, category)
+        print(book)
