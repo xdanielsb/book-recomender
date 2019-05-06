@@ -67,19 +67,23 @@ book(0.3,'Jane Eyre','Charlotte Bronte','Romance').
 
 % utilitary functions
 
+append(X, Y, [X|Y]).
+show([]):-!.
+show([(X,_,_)|T]):-
+  nl,write(X),nl, show(T).
+questions(L) :- findall((X,Y,Z,W),question(X,Y,Z,W), L).
 
 :-
  write('Hi User, you will be asked some questions with the final purpose to recommend you some books'),nl,nl,
  write('\t write a number from 0 to 7 to answer inclusive for each of the answer '),nl,nl,
  write('\t 0 means that you totally reject the statement and 7 means that you are completely agree.'),nl,nl.
 
-start  :-
-   Acum = [],
-   question(Q,P,X,Y),
+play([], L, L):-!.
+play([(Q,P,M,G)|T], L, Res)  :-
    write('Your answer should be in range [0 7], or stop '),nl,
-   write(Q),
-   write(' = '),
-   read(Ans),
-   Ans = 'stop',
-   write(P), write(X), write(Y),
-   write(Acum).
+   write(Q),nl,nl,
+   play(T,[(P,M,G)|L], Res).
+
+init(Res):-
+  questions(L),
+  play(L, [] , Res).
