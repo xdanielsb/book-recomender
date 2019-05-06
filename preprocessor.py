@@ -27,13 +27,20 @@ for question,increase,type  in facts:
 
 # Create Facts 2
 lines = open("books", "r").read().splitlines()
+relations  = set()
+
 for line in lines:
     if( len(line)< 2 ): continue
     if( line.startswith('?')): continue
     if( line.startswith('*')):
-        category = line[1:].split(' ')[0]
+        type = line[1:].split(' ')[0]
         continue
     score, name, author, *categories = line.split(',')
     for category in categories:
         book = "book({},'{}','{}','{}').".format(score, name, author, category)
+        relations.add((type, category))
         print(book)
+
+# Create relations
+for relation in relations:
+    print("relation('{}','{}').".format(*relation))
