@@ -1,20 +1,30 @@
-% utilitary functions
+% declare dynamics
+:- dynamic book/4.
 
+% utilitary functions
 append(L,[], L):-!.
 append([], L, L):-!.
 append([X1|T1], L,[X1|T2]) :-
   append(T1, L, T2).
 
+% logic to filter and show
 show([]):-!.
 show([(X,_,_)|T]):-
   nl,write(X),nl, show(T).
 questions(L) :- findall((X,Y,Z,W),question(X,Y,Z,W), L).
 
-:-
- write('Hi User, you will be asked some questions with the final purpose to recommend you some books'),nl,nl,
- write('\t write a number from -7 to 7 to answer inclusive for each answer'),nl,nl,
- write('\t -7 means that you totally reject the statement and 7 means that you are completely agree.'),nl,nl.
+listb:-
+  forall(book(_,Name,Author,Genre),(write(Genre), write(" -  "),write(Name),write(' - '),writeln(Author))).
 
+% logic to read data
+insert:-
+  write("Write the Name of the book  = "), read(Name), nl,
+  write("Author  = "), read(Author), nl,
+  write("Genre = "), read(Genre), nl,
+  write("Score of the book [0.0 1.0] = "), read(Score), nl,
+  assertz(book(Score, Name, Author, Genre)).
+
+% logic to play the game
 play([], L, L):-!.
 play([(Q,P,M,G)|T], L, Res)  :-
   %write('Your answer should be in range [-7 7]. , or  stop '),nl,nl,
@@ -74,5 +84,7 @@ init:-
   showRecommends( 1, Res ).
 
 
-  % Logic to add the categories
-  % Logic to recommend categories and books
+:-
+ write('Hi User, you will be asked some questions with the final purpose to recommend you some books'),nl,nl,
+ write('\t write a number from -7 to 7 to answer inclusive for each answer'),nl,nl,
+ write('\t -7 means that you totally reject the statement and 7 means that you are completely agree.'),nl,nl.
