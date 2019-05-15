@@ -21,7 +21,7 @@ insert:-
   write("Write the Name of the book  = "), read(Name), nl,
   write("Author  = "), read(Author), nl,
   write("Genre = "), read(Genre), nl,
-  write("Score of the book [0.0 1.0] = "), read(Score), nl,
+  write("Score (genre) of the book [0 100] = "), read(Score), nl,
   assertz(book(Score, Name, Author, Genre)).
 
 % logic to play the game

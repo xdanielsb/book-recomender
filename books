@@ -1,28 +1,28 @@
 ?[Grade, Name, Author, Categories-]
 *Agreeableness
-1.0,Treasure Island,Stevenson,Adventure
-0.7,The Hobbit,J.R.R. Tolkien,Adventure,Science Fiction
-0.5,Into thin Air,Jon Krakauer,Adventure
-0.3,Wild,Cheryl Strayed,Adventure
-0.1,The Call of the Wild, Jack London,Adventure
+90,Treasure Island,Stevenson,Adventure
+70,The Hobbit,J.R.R. Tolkien,Adventure,Science Fiction
+50,Into thin Air,Jon Krakauer,Adventure
+30,Wild,Cheryl Strayed,Adventure
+10,The Call of the Wild, Jack London,Adventure
 *Conscientiousness
-1.0,The War of Art,Steven Pressfield,Self-Help
-0.7,Brain Rules,John Medina,Self-Help
-0.5,The 7 Habits of Highly Effective People,Stephen Covey,Self Help
-0.3,The Telling Room,Paterniti,Biography
-0.1,Barrel of Monkeys,Ruppert,Travel
+90,The War of Art,Steven Pressfield,Self Help
+70,Brain Rules,John Medina,Self-Help
+50,The 7 Habits of Highly Effective People,Stephen Covey,Self Help
+30,The Telling Room,Paterniti,Biography
+10,Barrel of Monkeys,Ruppert,Travel
 *Openness
-1.0,Ender Game, Orson Scott,Science.Fiction
-0.7,Brave New World, Leslie Holland,Dystopian,Science Fiction
-0.5,Fahrenheit 451,Ray Bradbury,Dystopian,Science Fiction
-0.3,The Time Machine,H. G. Wells,Romance,Fantasy,Science Fiction
+90,Ender Game, Orson Scott,Science Fiction
+70,Brave New World, Leslie Holland,Dystopian,Science Fiction
+50,Fahrenheit 451,Ray Bradbury,Dystopian,Science Fiction
+10,The Time Machine,H. G. Wells,Romance,Fantasy,Science Fiction
 *Neuroticism
-1.0,1984,George Orwel,Science Fiction,Dystopian
-0.7,Great Expectations,Charles Dickens,Bildungsroman,Social,Critism
-0.5,Me Before You,Jojo Moyes,Romance
-0.3,My Sisters Keeper, Jodi Picoult,Fiction
+90,1984,George Orwel,Science Fiction,Dystopian
+70,Great Expectations,Charles Dickens,Bildungsroman,Social,Critism
+50,Me Before You,Jojo Moyes,Romance
+10,My Sisters Keeper, Jodi Picoult,Fiction
 *Extraversion
-1.0,Pride and Prejudice,Jane Austen,Satire,Romance
-0.7,Love Story, Erich Segal,Fiction,Romance
-0.5,Fifty Shades of Grey,E. L. James,Fiction,Romance,Erotic
-0.3,Jane Eyre,Charlotte Bronte, Gothic,Bildungsroman,Romance
+90,Pride and Prejudice,Jane Austen,Satire,Romance
+70,Love Story, Erich Segal,Fiction,Romance
+50,Fifty Shades of Grey,E. L. James,Fiction,Romance,Erotic
+10,Jane Eyre,Charlotte Bronte, Gothic,Bildungsroman,Romance
