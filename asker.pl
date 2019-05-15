@@ -72,7 +72,7 @@ recommend([(Cat,B)|T], L, Res):-
   recommend(T, L3, Res).
 
 showRecommends(_,[]):-!.
-%showRecommends(4,_):-!.
+%showRecommends(4,_):-!. % uncomment if you junt want 3 recommendations
 showRecommends(Num, [(_, Name, Author, Category)|T]):-
   write("---------------Recommend #"), write(Num), write(" ---------------"),nl,
   write("\tName  = "),write(Name), nl,
