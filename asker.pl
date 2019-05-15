@@ -14,7 +14,7 @@ show([(X,_,_)|T]):-
 questions(L) :- findall((X,Y,Z,W),question(X,Y,Z,W), L).
 
 listb:-
-  forall(book(_,Name,Author,Genre),(write(Genre), write(" -  "),write(Name),write(' - '),writeln(Author))).
+  forall(book(Score,Name,Author,Genre),(write(Genre), write(" -  "),write(Name),write(' - '),write(Author), write('-'), writeln(Score))).
 
 % logic to read data
 insert:-
@@ -42,7 +42,8 @@ play([(Q,P,M,G)|T], L, Res)  :-
 
 computeProbs([], L, L):-!.
 computeProbs([(M,Y,P,G)], L, Ans):-
-  computeProbs([],[(M,Y,P,G)|L], Ans).
+  P1 is (Y*P/7),
+  computeProbs([],[(M,Y,P1,G)|L], Ans).
 computeProbs([(M1,Y1,P1,G1),(M2,Y2,P2,G2)|T], L, Ans):-
   (
     (
@@ -51,19 +52,27 @@ computeProbs([(M1,Y1,P1,G1),(M2,Y2,P2,G2)|T], L, Ans):-
       computeProbs([(M1, 7, P, 1)|T], L, Ans)
     );
     (
-      computeProbs([(M2, Y2, P2, G2)|T], [(M1, Y1, P1, G1)|L], Ans)
+      P3 is (P2*Y2/7),
+      P4 is (P1*Y1/7),
+      computeProbs([(M2, Y2, P3, G2)|T], [(M1, Y1, P4, G1)|L], Ans)
     )
   ).
 
+
+getCategories([], L, L):-!.
+getCategories([(A,_,B,_)|T], L, Res):-
+  findall( (Category, B),( relation(A, Category)),L2),
+  append(L, L2, L3),
+  getCategories(T, L3, Res).
+
 recommend([], L, L):-!.
-recommend([(A,_,B,_)|T], L, Res):-
-  relation(A, Category),
-  findall( (Score, Name, Author, Category),( book(Score, Name, Author, Category), Score >= B),L2),
+recommend([(Cat,B)|T], L, Res):-
+  findall( (Score, Name, Author, Category),( book(Score, Name, Author, Category), Score =< B, Category=Cat),L2),
   append(L, L2, L3),
   recommend(T, L3, Res).
 
 showRecommends(_,[]):-!.
-showRecommends(4,_):-!.
+%showRecommends(4,_):-!.
 showRecommends(Num, [(_, Name, Author, Category)|T]):-
   write("---------------Recommend #"), write(Num), write(" ---------------"),nl,
   write("\tName  = "),write(Name), nl,
@@ -72,17 +81,17 @@ showRecommends(Num, [(_, Name, Author, Category)|T]):-
   Num2 is Num+1,
   showRecommends(Num2, T).
 
-init:-
+init(Categories):-
   [facts],
   questions(L),
   random_permutation(L, L2),
   play(L2, [] , R2),
   msort(R2, R3),
   computeProbs(R3,[], R4 ),
-  recommend(R4, [], R5),
+  getCategories(R4, [], Categories),
+  recommend(Categories,[], R5),
   sort(1, @>=, R5, Res),
   showRecommends( 1, Res ).
-
 
 :-
  write('Hi User, you will be asked some questions with the final purpose to recommend you some books'),nl,nl,
