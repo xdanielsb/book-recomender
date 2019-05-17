@@ -14,7 +14,7 @@ show([(X,_,_)|T]):-
 questions(L) :- findall((X,Y,Z,W),question(X,Y,Z,W), L).
 
 listb:-
-  forall(book(Score,Name,Author,Genre),(write(Genre), write(" -  "),write(Name),write(' - '),write(Author), write('-'), writeln(Score))).
+  forall(book(Score,Name,Author,Genre),(write(' - '),write(Score), write("\t"),write(Name),write('\t'),write(Author), write('\t'), writeln(Genre))).
 
 % logic to read data
 insert:-
@@ -94,6 +94,9 @@ init(Categories):-
   showRecommends( 1, Res ).
 
 :-
- write('Hi User, you will be asked some questions with the final purpose to recommend you some books'),nl,nl,
- write('\t write a number from -7 to 7 to answer inclusive for each answer'),nl,nl,
- write('\t -7 means that you totally reject the statement and 7 means that you are completely agree.'),nl,nl.
+ write('-----Hi User, you will be asked some questions with the final purpose to recommend you some books'),nl,
+ write('\t (1) Write insert. to create a new book (take care with the case)'),nl,
+ write('\t (2) Write listb. to list all books, in the database.'),nl,
+ write('\t (3) Write a number from [-7 7] to answer each answer'),nl,nl,
+ write('\t\t -7 means that you totally reject the statement \n\t\t 7 means that you are completely agree.'),nl,nl,nl,
+ writeln('\t--------------------(Book Recommender)----------------------'),nl.
