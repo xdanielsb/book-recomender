@@ -44,3 +44,6 @@ for line in lines:
 # Create relations
 for relation in relations:
     print("relation('{}','{}').".format(*relation))
+
+
+# how to use it? python preprocessor.py > facts.pl
